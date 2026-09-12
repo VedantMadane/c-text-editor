@@ -1207,10 +1207,8 @@ static int editor_apply_undo_action(const EditorAction* action)
             prev->hl = NULL;
             prev->hl_open_comment = 0;
 
-            EditorLine new_line = {.text = restored,
-                                   .len = action->line_len,
-                                   .hl = NULL,
-                                   .hl_open_comment = 0};
+            EditorLine new_line = {
+                .text = restored, .len = action->line_len, .hl = NULL, .hl_open_comment = 0};
             editor_lines_array_insert(&E.lines, row, new_line);
             E.cy = row;
             E.cx = action->col;
