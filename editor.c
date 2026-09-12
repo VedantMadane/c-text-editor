@@ -869,6 +869,7 @@ void editor_del_char(void)
                 return;
             }
             memcpy(&prev_line->text[prev_line->len], line->text, line->len);
+            int ecx_prevline = prev_line->len;
             prev_line->len += line->len;
             prev_line->text[prev_line->len] = '\0';
 
@@ -889,7 +890,7 @@ void editor_del_char(void)
             }
             else
             {
-                E.cx = prev_line->len;
+                E.cx = ecx_prevline;
                 E.cy--;
                 editor_update_syntax(E.cy);
             }
